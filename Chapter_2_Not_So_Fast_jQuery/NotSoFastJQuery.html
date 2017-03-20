@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Not So Fast</title>
+		<meta charset = "utf-8"/>
+		
+		<script src = "../jquery-1.11.2.js"></script>
+		<style>
+			.emphasis{color:red;}
+		</style>
+		<script>
+			/*
+				$('li:first-child').addClass('emphasis');
+				This won't work as the DOM has not completely loaded now.
+				The DOM loads from top to bottom.
+				The list item has been referenced before it is loaded.
+			*/
+			function myFunc()
+			{
+				$('li:first-child').addClass('emphasis');
+			}
+			// $(document).ready(myFunc);
+			// $(myFunc);
+			// $(function() {
+			// 	$('li:first-child').addClass("emphasis");
+			// });
+
+			$(document).ready(function(){
+				$('li:first-child').addClass('emphasis');
+				});//This function applies the desired changes when the DOM has 
+				//been loaded and ready to be manipulated.
+				// It keeps checking every 9-10 ms if the DOM has been loaded and ready to be 
+				// manipulated.
+				
+			/*
+				Alternate syntax:$(function(){});
+				This is a shorthand for the document.ready method . You can see this in the jQuery source file.
+				(what happens if a function is passed to the jQuery method.It simply is a shortcut for ready function) 
+			*/
+		</script>
+		
+	</head>
+	
+	<body>
+		<ul>
+			<li>Hello</li>
+			<li>Hello2</li>
+			<li>Hello3</li>
+		</ul>
+
+	</body>
+</html>
